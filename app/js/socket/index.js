@@ -6,7 +6,7 @@
 
 'use strict';
 
-angular.module('btford.socket-io', []).
+module.exports = angular.module('btford.socket-io', []).
     provider('socket', function () {
 
         // when forwarding events, prefix the event name
@@ -51,7 +51,7 @@ angular.module('btford.socket-io', []).
 
                     if ( callback ) {
 
-                            socket.emit(eventName, data, asyncAngularify(callback));
+                        socket.emit(eventName, data, asyncAngularify(callback));
                     }
 
                     else {

@@ -1,9 +1,14 @@
 'use strict';
 
+//var angular = require ('angular' );
+var socket = require ( './socket' );
+
+var lib = require ( 'lib' );
+
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
         'ngRoute',
-        'btford.socket-io'
+        socket.name
     ])
 
     .config(['$routeProvider', function($routeProvider) {
@@ -55,6 +60,9 @@ angular.module('myApp', [
             else {
 
                 console.log ( "getAllUsers callback: ", data );
+
+                var r = lib.ddpm.diff ( { "#dn:schema": { "a": { "#dn:type": "Set", "#dn:contents": "String"} }, a: ["Hi"] }, { "#dn:schema": { "a": { "#dn:type": "Set", "#dn:contents": "String"} }, a: ["Hello"]});
+                console.log ( "validate: ", r);
 
                 Cntrl.users = data;
 
